@@ -36,7 +36,7 @@ private:
 	    data_out.write(data_a_in.read() / data_b_in.read());
 	    break;
 	 case 4: //mod
-	    data_out.write(data_a_in.read() / data_b_in.read());
+	    data_out.write(data_a_in.read() % data_b_in.read());
 	    break;
 	 case 5: //max
 	    if (data_a_in.read() > data_b_in.read())
