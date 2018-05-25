@@ -1,6 +1,6 @@
 #include <data_memory.h>
 #include <testbench.h>
-
+#include <Vibs-200>
 int sc_main(int /*unused*/,char ** /*unused*/){
   sc_time DELAY(10,SC_NS);
   sc_time PERIOD(10,SC_NS);
