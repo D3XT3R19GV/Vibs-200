@@ -56,7 +56,7 @@ void Testbench::test(){
   write_enable_out.write(0);
   dirdata_out.write(3);
   data_out.write(10);
-  dira_out.write(3);
+  dira_out.write(2);
   dirb_out.write(1);
 
   wait();
