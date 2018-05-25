@@ -3,7 +3,8 @@ CONFIG += console c++
 CONFIG -= app_bundle
 CONFIG -= qt
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    Src/testbench.cpp
 
 unix:!macx: LIBS += -L$$PWD/../systemc-2.3.2/lib-linux64/ -lsystemc
 
@@ -15,4 +16,7 @@ unix:!macx: PRE_TARGETDEPS += $$PWD/../systemc-2.3.2/lib-linux64/libsystemc.a
 HEADERS += \
     Include/regs.H \
     Include/alu.H \
-    Include/instruction_memory.h
+    Include/instruction_memory.h \
+    Include/testbench.h \
+    Include/register_file.h \
+    Include/data_memory.h
