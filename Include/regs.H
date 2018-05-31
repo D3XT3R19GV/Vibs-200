@@ -8,6 +8,7 @@ template <int siz=4>
 class regs : public sc_module
 {
 public:
+
   sc_in<bool> clk_in, enable_in;
   sc_in<sc_uint<siz> > data_in;
   sc_out<sc_uint<siz> > data_out;

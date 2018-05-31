@@ -30,6 +30,7 @@ public:
   // Data to be written in _Write_Dir
   sc_in<sc_uint<OP_LEN>> _Write_Data;
 
+
   SC_CTOR (Register_File)
   {
     // read method sensitive to negative threshold
@@ -50,13 +51,20 @@ private:
   {
     _Dat_A.write(_Registers[_Reg_A.read() ]);
     _Dat_B.write(_Registers[_Reg_B.read() ]);
+
+    std::cout << "RF_DAR:" << _Registers[_Reg_A.read()] << "\n";
+    std::cout << "RF_DBR:" << _Registers[_Reg_B.read()] << "\n";
   }
 
   // Write operation
   void write()
   {
     if (_Write_Enable.read() == true)
+    {
       _Registers[_Write_Dir.read()] = _Write_Data.read();
+      std::cout << "RF_DW: @" << _Write_Dir.read() << " = " << _Write_Data.read() << "\n";
+    }
+
   }
 };
 

@@ -2,14 +2,15 @@
 #define MUX_H
 
 #include <systemc.h>
-
+template <int size1=32, int size2=4>
 class mux: public sc_module
 {
 public:
+
   sc_in<bool> active;
-  sc_in<sc_uint<32>> long_in;
-  sc_in<sc_uint<4>> short_in;
-  sc_out<sc_uint<32>> long_out;
+  sc_in<sc_uint<size1>> long_in;
+  sc_in<sc_uint<size2>> short_in;
+  sc_out<sc_uint<size1>> long_out;
 
   SC_CTOR(mux)
   {

@@ -9,6 +9,12 @@
 
 class Instruction_Memory: public sc_module
 {
+public:
+  sc_in<sc_uint<DIR_LEN>> _Dir_In;
+  sc_out<sc_uint<INSTR_LEN>> _Ins_Out;
+  sc_out<sc_uint<INSTR_LEN>> _Ins_Out_Next;
+
+
   SC_CTOR(Instruction_Memory)
   {
     SC_METHOD(search);
@@ -17,9 +23,6 @@ class Instruction_Memory: public sc_module
     _Mem_File.open("memoryFile.txt");
   }
 
-  sc_in<sc_uint<DIR_LEN>> _Dir_In;
-  sc_out<sc_uint<INSTR_LEN>> _Ins_Out;
-  sc_out<sc_uint<INSTR_LEN>> _Ins_Out_Next;
 
 private:
   std::ifstream _Mem_File;
@@ -35,14 +38,14 @@ private:
     _Mem_File.seekg(pos_In_File, std::ios::beg);
     _Mem_File.getline(temp_Instr, INSTR_LEN+1);
 
-    for (int i; i < INSTR_LEN; ++i)
+    for (int i=0; i < INSTR_LEN; ++i)
       if (temp_Instr[i] == '1')
         instruction[INSTR_LEN -1 -i] = 1;
       else
         instruction[INSTR_LEN -1 -i] = 0;
 
     _Mem_File.getline(temp_Instr, INSTR_LEN+1);
-    for (int i; i < INSTR_LEN; ++i)
+    for (int i=0; i < INSTR_LEN; ++i)
       if (temp_Instr[i] == '1')
         instruction_next[INSTR_LEN -1 -i] = 1;
       else
@@ -50,8 +53,12 @@ private:
 
     _Ins_Out.write(instruction);
     _Ins_Out_Next.write(instruction_next);
+
+    std::cout << "instruction: ";
+    for (int i=0; i < INSTR_LEN; ++i)
+      std::cout  << instruction[INSTR_LEN -1 -i] ;
+    std::cout << "\n";
   }
 
-}
-
+};
 #endif // INSTRUCTION_MEMORY_H

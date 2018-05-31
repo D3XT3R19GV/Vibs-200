@@ -14,7 +14,8 @@ HEADERS += Include/regs.H \
            Include/testbench.h \
            Include/register_file.h \
            Include/data_memory.h \
-    Include/vibs200.h
+    Include/mux.h \
+    Include/vibs-200.h
 
 unix:!macx: LIBS += -L$$PWD/../systemc-2.3.2/lib-linux64/ -lsystemc
 
